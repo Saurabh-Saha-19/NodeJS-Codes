@@ -1,0 +1,23 @@
+<h1 class="mt-4 mb-4">Add a blog</h1>
+<form action="/" method="post">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" id="title" name="title" class="form-control" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+    ></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image</label>
+    <input type="url" id="imageUrl" name="imageUrl" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create new Blog</button>
+</form>
