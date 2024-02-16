@@ -16,7 +16,7 @@ class UserController {
     res.render("login", { errorMessage: null, success: true });
   }
 
-  postLoginUser(req, res) {
+  postLoginUser(req, res, next) {
     const { email, password } = req.body;
     const isValidUser = UserModel.isValidUser(email, password);
     console.log(isValidUser);
@@ -30,6 +30,7 @@ class UserController {
         success: null,
       });
     }
+    next();
   }
 
   getLogout(req, res) {
@@ -37,6 +38,8 @@ class UserController {
       if (error) console.log(error);
       else res.redirect("/login");
     });
+
+    res.clearCookie("lastVisit");
   }
 }
 

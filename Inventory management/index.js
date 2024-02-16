@@ -7,6 +7,8 @@ import uploadFile from "./src/middleware/file-upload.middleware.js";
 import UserController from "./src/controllers/user.controller.js";
 import session from "express-session";
 import { auth } from "./src/middleware/auth.middleware.js";
+import cookieParser from "cookie-parser";
+import { setLastVisit } from "./src/middleware/lastVisit.middleware.js";
 
 const server = express();
 
@@ -21,7 +23,7 @@ server.use(
     cookie: { secure: false },
   })
 );
-
+server.use(cookieParser());
 //setting up the view engine.
 server.set("view engine", "ejs");
 server.set("views", path.join(path.resolve(), "src", "views"));
@@ -50,7 +52,7 @@ const userController = new UserController();
 server.get("/register", userController.getRegisterPage);
 server.get("/login", userController.getLoginPage);
 server.post("/register", userController.postRegisterUser);
-server.post("/login", userController.postLoginUser);
+server.post("/login", setLastVisit, userController.postLoginUser);
 server.get("/logout", userController.getLogout);
 
 export { server };

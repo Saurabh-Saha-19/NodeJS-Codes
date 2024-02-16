@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+body {
+  font-family: "Raleway";
+}
+
+.landing-title {
+  margin-top: 10vmin;
+}
+
+#new-job-container {
+  margin: auto;
+  width: 60vmax;
+  padding: 0 10vmin 10vmin 10vmin;
+  margin-bottom: 10vmin;
+  margin-top: 5vmin;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-family: "Raleway";
+}
+
+.front-page-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.front-page-text-container {
+  padding-top: 5vmax;
+  padding-left: 2vmax;
+}
+
+.landing-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.front-banner {
+  width: 50%;
+}
