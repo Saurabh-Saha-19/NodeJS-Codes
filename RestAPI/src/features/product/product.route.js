@@ -2,20 +2,21 @@ import express from "express";
 import { ProductController } from "./product.controller.js";
 import uploadFile from "../../middlewares/fileUpload.middleware.js";
 import { basicAuth } from "../../middlewares/basicAuth.middleware.js";
+import jwtAuth from "../../middlewares/jwtAuth.middleware.js";
 
 const productRouter = express.Router();
 const productController = new ProductController();
 
-productRouter.get("/", basicAuth, productController.getAllProducts);
+productRouter.get("/", jwtAuth, productController.getAllProducts);
 productRouter.post(
   "/",
-  basicAuth,
+  jwtAuth,
   uploadFile.single("imageUrl"),
   productController.postProduct
 );
-productRouter.get("/filter", basicAuth, productController.filterProducts);
+productRouter.get("/filter", jwtAuth, productController.filterProducts);
 
-productRouter.get("/:id", basicAuth, productController.getOneProduct);
-productRouter.get("/filter", basicAuth, productController.filterProducts);
+productRouter.get("/:id", jwtAuth, productController.getOneProduct);
+productRouter.get("/filter", jwtAuth, productController.filterProducts);
 
 export default productRouter;
