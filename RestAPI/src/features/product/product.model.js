@@ -1,3 +1,5 @@
+import UserModel from "../user/user.model.js";
+
 class ProductModel {
   constructor(id, name, desc, imageUrl, category, sizes, price) {
     this.id = id;
@@ -38,6 +40,56 @@ class ProductModel {
     });
 
     return filteredProd;
+  }
+
+  static rateProduct(userID, productID, rating) {
+    //1. Validate the user
+    const allUsers = UserModel.getAllUsers();
+    const user = allUsers.find((u) => {
+      if (u.id == userID) {
+        return u;
+      }
+    });
+
+    if (!user) {
+      console.log("Error 1");
+      return "user not found";
+    }
+
+    //2. Validate product
+    const product = products.find((p) => {
+      if (p.id == productID) {
+        return p;
+      }
+    });
+
+    if (!product) {
+      console.log("Error 2");
+      return "Product not found";
+    }
+
+    //check for ratings array
+    if (!product.ratings) {
+      product.ratings = [];
+      product.ratings.push({ userID: userID, rating: rating });
+    } else {
+      //check if the user has already given the rating before
+      const existingRatingIndex = product.ratings.findIndex((r) => {
+        return r.userID == userID;
+      });
+
+      //console.log(existingRatingIndex);
+
+      if (existingRatingIndex >= 0) {
+        product.ratings[existingRatingIndex] = {
+          userID: userID,
+          rating: rating,
+        };
+      } else {
+        //no existing rating from the user.
+        product.ratings.push({ userID: userID, rating: rating });
+      }
+    }
   }
 }
 

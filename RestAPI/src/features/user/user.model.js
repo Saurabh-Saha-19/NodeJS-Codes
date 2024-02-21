@@ -40,6 +40,14 @@ let users = [
     type: "seller",
     password: "qwerty123",
   },
+
+  {
+    id: 2,
+    name: "Saurabh",
+    email: "customer@gmail.com",
+    type: "buyer",
+    password: "1234",
+  },
 ];
 
 export default UserModel;

@@ -18,5 +18,6 @@ productRouter.get("/filter", jwtAuth, productController.filterProducts);
 
 productRouter.get("/:id", jwtAuth, productController.getOneProduct);
 productRouter.get("/filter", jwtAuth, productController.filterProducts);
+productRouter.post("/rating", jwtAuth, productController.rateProduct);
 
 export default productRouter;

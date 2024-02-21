@@ -43,6 +43,17 @@ class ProductController {
       res.status(404).send("Not Found!");
     }
   }
+
+  rateProduct(req, res) {
+    const { userID, productID, rating } = req.query;
+    const error = ProductModel.rateProduct(userID, productID, rating);
+
+    if (error) {
+      res.status(400).send("Rating not added");
+    } else {
+      res.status(201).send("Rating added successfully!");
+    }
+  }
 }
 
 export { ProductController };
