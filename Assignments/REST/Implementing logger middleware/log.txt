@@ -1,0 +1,8 @@
+
+Wed Feb 21 2024 17:05:27 GMT+0530 (India Standard Time)
+ req URL: /api/user/register
+ reqBody: {"name":"codingninjas","email":"cn@gmail.com","password":"Ninjas@123"}
+
+Wed Feb 21 2024 17:05:42 GMT+0530 (India Standard Time)
+ req URL: /api/user/register
+ reqBody: {"name":"vivek","email":"cn@gmail.com","password":"Ninjas@123"}
